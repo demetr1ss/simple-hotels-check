@@ -63,10 +63,10 @@ export default function LoginForm() {
             />
             {errors?.password && <span className={styles.error}>invalid password. </span>}
           </label>
+          <button className={styles.button} type='submit'>
+            Войти
+          </button>
         </form>
-        <button className={styles.button} type='submit'>
-          Войти
-        </button>
       </FocusLock>
     </div>
   );

@@ -1,5 +1,7 @@
+import Header from '../../components/header/header';
+
 export default function MainScreen() {
   return (
-    <div>main-screen</div>
+    <Header />
   );
 }
