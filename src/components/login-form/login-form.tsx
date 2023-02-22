@@ -3,6 +3,7 @@ import styles from './login-form.module.css';
 import FocusLock from 'react-focus-lock';
 import {useForm} from 'react-hook-form';
 import cn from 'classnames';
+import {emailRegExp} from '../../const/const';
 
 export type UserDataType = {
   email: string;
@@ -44,7 +45,7 @@ export default function LoginForm() {
               autoComplete='new-password'
               {...register('email', {
                 required: true,
-                pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/i,
+                pattern: emailRegExp,
               })}
             />
             {errors?.email && <span className={styles.error}>invalid email</span>}

@@ -8,3 +8,7 @@ export const enum AppRoute {
   Main = '/',
   Login = '/login',
 }
+
+export const emailRegExp = new RegExp(
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
+);
