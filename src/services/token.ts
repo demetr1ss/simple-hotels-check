@@ -1,4 +1,4 @@
-const AUTH_TOKEN_KEY_NAME = 'simple-hotel-check';
+const AUTH_TOKEN_KEY_NAME = 'user-email';
 
 export type Token = string;
 

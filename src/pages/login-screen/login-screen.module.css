@@ -3,8 +3,13 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+.bg {
   min-height: 100vh;
-  background-image: url('../../../public/img/bg.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('../../../public/img/bg.jpg');
+  filter: blur(10px);
+  background-size: cover;
+  width: 100%;
 }

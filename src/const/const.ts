@@ -1,7 +1,6 @@
 export const enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
 }
 
 export const enum AppRoute {
@@ -12,3 +11,8 @@ export const enum AppRoute {
 export const emailRegExp = new RegExp(
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
 );
+
+export const NameSpace = {
+  userProcess: 'USER-PROCESS',
+  appProcess: 'APP-PROCESS'
+} as const;

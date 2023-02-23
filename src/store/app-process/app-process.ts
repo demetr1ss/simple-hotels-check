@@ -1,16 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {AuthorizationStatus} from '../../const/const';
+import {NameSpace} from '../../const/const';
 
-export type UserProcessType = {
-  authorizationStatus: AuthorizationStatus;
-};
 
-const initialState: UserProcessType = {
-  authorizationStatus: AuthorizationStatus.Unknown,
+const initialState = {
 };
 
 export const appProcess = createSlice({
-  name: 'appProcess',
+  name: NameSpace.appProcess,
   initialState,
   reducers: {},
   extraReducers: {}

@@ -1,10 +1,14 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const/const';
+import {useAppDispatch} from '../../hooks';
+import {logOut} from '../../store/user-process/user-process';
 import styles from './logout.module.css';
 
 export default function Logout() {
+  const dispatch = useAppDispatch();
+
   return (
-    <Link className={styles.link} to={AppRoute.Login}>
+    <Link className={styles.link} to={AppRoute.Login} onClick={() => dispatch(logOut())}>
       <span className={styles.linkText}>Выйти</span>
       <svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none' viewBox='0 0 22 22'>
         <path

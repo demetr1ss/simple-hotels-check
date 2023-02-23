@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {Provider} from 'react-redux';
 import App from './components/app/app';
-import browserHistory from './components/browser-history';
-import HistoryRouter from './components/history-route/history-route';
+import {Provider} from 'react-redux';
 import {store} from './store';
+import {BrowserRouter} from 'react-router-dom';
 import './index.css';
+import {getToken} from './services/token';
+import {logIn} from './store/user-process/user-process';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+const token = getToken();
+
+if (token) {
+  store.dispatch(logIn(token));
+}
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HistoryRouter history={browserHistory}>
+      <BrowserRouter>
         <App />
-      </HistoryRouter>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

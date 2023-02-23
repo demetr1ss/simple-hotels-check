@@ -4,6 +4,8 @@ import FocusLock from 'react-focus-lock';
 import {useForm} from 'react-hook-form';
 import cn from 'classnames';
 import {emailRegExp} from '../../const/const';
+import {useAppDispatch} from '../../hooks';
+import {logIn} from '../../store/user-process/user-process';
 
 export type UserDataType = {
   email: string;
@@ -11,6 +13,8 @@ export type UserDataType = {
 };
 
 export default function LoginForm() {
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -27,9 +31,8 @@ export default function LoginForm() {
     [styles.labelError]: errors.password,
   });
 
-  const onSubmit = () => {
-    // eslint-disable-next-line no-console
-    console.log('submit');
+  const onSubmit = (data: UserDataType) => {
+    data && dispatch(logIn(data.email));
   };
 
   return (

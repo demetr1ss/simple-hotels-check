@@ -1,8 +1,12 @@
 .container {
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
   box-sizing: border-box;
   width: 409px;
   height: 382px;
-  margin: auto;
   background-color: #ffffff;
   box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
@@ -41,8 +45,6 @@
   border: 1px solid #c9cacc;
   border-radius: 4px;
 }
-
-
 
 .button {
   font: inherit;
