@@ -3,7 +3,7 @@ import styles from './login-form.module.css';
 import FocusLock from 'react-focus-lock';
 import {useForm} from 'react-hook-form';
 import cn from 'classnames';
-import {emailRegExp} from '../../const/const';
+import {emailRegExp, passwordRegExp} from '../../const/const';
 import {useAppDispatch} from '../../hooks';
 import {logIn} from '../../store/user-process/user-process';
 
@@ -61,7 +61,8 @@ export default function LoginForm() {
               autoComplete='new-password'
               {...register('password', {
                 required: true,
-                minLength: 8,
+                pattern: passwordRegExp,
+                minLength: 8
               })}
             />
             {errors?.password && <span className={styles.error}>invalid password. </span>}
