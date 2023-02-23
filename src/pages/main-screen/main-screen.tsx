@@ -20,13 +20,15 @@ export default function MainScreen() {
   }, [authStatus, navigate]);
 
   return (
-    <main className={styles.main}>
+    <>
       <Header />
-      <section className={styles.wrapper}>
-        <Locations />
-        <Favorites />
-        <Hotels />
-      </section>
-    </main>
+      <main className={styles.main}>
+        <div className={styles.wrapper}>
+          <Locations />
+          <Favorites />
+          <Hotels />
+        </div>
+      </main>
+    </>
   );
 }

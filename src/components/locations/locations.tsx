@@ -1,6 +1,8 @@
 import styles from './locations.module.css';
 
 export default function Locations() {
+  const today = new Date().toLocaleDateString('en-CA');
+
   return (
     <section className={styles.container}>
       <form className={styles.form}>
@@ -10,7 +12,7 @@ export default function Locations() {
         </label>
         <label>
           <span className={styles.inputlabel}>Дата заселения</span>
-          <input className={styles.input} type='date' />
+          <input className={styles.input} type='date' defaultValue={today} />
         </label>
         <label>
           <span className={styles.inputlabel}>Количество дней</span>
@@ -23,4 +25,3 @@ export default function Locations() {
     </section>
   );
 }
-
