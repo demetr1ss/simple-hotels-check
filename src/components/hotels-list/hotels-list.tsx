@@ -6,6 +6,13 @@ export default function HotelsList() {
     <div className={styles.container}>
       <ul className={styles.list}>
         <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
       </ul>
     </div>
   );

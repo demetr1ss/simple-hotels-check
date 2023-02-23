@@ -9,10 +9,10 @@ export const enum AppRoute {
 }
 
 export const emailRegExp = new RegExp(
-  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 );
 
 export const NameSpace = {
   userProcess: 'USER-PROCESS',
-  appProcess: 'APP-PROCESS'
+  appProcess: 'APP-PROCESS',
 } as const;

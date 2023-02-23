@@ -1,0 +1,101 @@
+.item:not(:last-child) {
+  position: relative;
+  margin-bottom: 33px;
+}
+
+.item:not(:last-child)::after {
+  position: absolute;
+  content: '';
+  bottom: -16px;
+  width: 100%;
+  height: 1px;
+  background: rgba(135, 135, 135, 0.2);
+  border-radius: 8px;
+}
+
+.itemTitle {
+  font-weight: 300;
+  font-size: 17px;
+  margin: 0;
+}
+
+.headingWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.button svg {
+  fill: #e55858;
+}
+
+.dateWrapper {
+  display: flex;
+  color: #878787;
+  margin-bottom: 10px;
+}
+
+.date {
+  position: relative;
+  padding-right: 37px;
+}
+
+.date::after {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  content: '';
+  width: 9px;
+  height: 1px;
+  background: #c4c4c4;
+  border-radius: 2px;
+}
+
+.featuresWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ratingStars {
+  position: relative;
+  display: block;
+  font-size: 0;
+  width: 99px;
+  height: 17px;
+}
+
+.ratingStars::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  background: url('/public/img/stars.svg') transparent no-repeat center;
+  width: 99px;
+  background-size: 99px 17px;
+}
+
+.ratingStars span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  width: 0;
+}
+
+.ratingStars span::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  background: url('../../../public/img/active-stars.svg') transparent no-repeat center;
+  width: 99px;
+  background-size: 99px 17px;
+}

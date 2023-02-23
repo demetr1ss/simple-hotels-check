@@ -11,5 +11,6 @@
     url('../../../public/img/bg.jpg');
   filter: blur(10px);
   background-size: cover;
+  background-position: 100% 100%;
   width: 100%;
 }
