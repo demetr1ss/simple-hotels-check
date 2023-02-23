@@ -5,3 +5,27 @@
   border-radius: 16px;
   padding: 32px;
 }
+
+.hotelsHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #41522e;
+}
+
+.favoritesCount {
+  font-size: 17px;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.count {
+  font-weight: 500;
+}

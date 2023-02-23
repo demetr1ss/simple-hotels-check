@@ -1,7 +1,8 @@
-// import styles from './carousel.module.css';
+import styles from './carousel.module.css';
 
 export default function Carousel() {
   return (
-    <div>carousel</div>
+    <div className={styles.container}>
+    </div>
   );
 }

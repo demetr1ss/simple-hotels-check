@@ -5,14 +5,14 @@ export default function HotelsList() {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
+        <HotelCard isBig />
       </ul>
     </div>
   );
