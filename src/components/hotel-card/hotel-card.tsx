@@ -1,11 +1,14 @@
 import cn from 'classnames';
+import {Hotel} from '../../types/types';
 import styles from './hotel-card.module.css';
 
 type HotelCardPropsType = {
+  hotel: Hotel;
   isBig?: boolean;
+  checkInDate: string;
 };
 
-export default function HotelCard({isBig}: HotelCardPropsType) {
+export default function HotelCard({isBig, hotel, checkInDate}: HotelCardPropsType) {
   const cardClassName = cn(styles.item, {
     [styles.bigCard]: isBig,
   });
@@ -13,7 +16,7 @@ export default function HotelCard({isBig}: HotelCardPropsType) {
   return (
     <li className={cardClassName}>
       <div className={styles.headingWrapper}>
-        <h3 className={styles.itemTitle}>Moscow Marriott Grand Hotel</h3>
+        <h3 className={styles.itemTitle}>{hotel.hotelName}</h3>
         <button className={styles.button} type='button'>
           <span className='visually-hidden'>Удалить из избранного.</span>
           <svg xmlns='http://www.w3.org/2000/svg' width='21' height='18' fill='none' viewBox='0 0 21 18'>
@@ -22,7 +25,7 @@ export default function HotelCard({isBig}: HotelCardPropsType) {
         </button>
       </div>
       <div className={styles.dateWrapper}>
-        <span className={styles.date}>28 June, 2020 </span>
+        <span className={styles.date}>{checkInDate}</span>
         <span className={styles.dateCount}>1 день</span>
       </div>
       <div className={styles.featuresWrapper}>
@@ -33,7 +36,7 @@ export default function HotelCard({isBig}: HotelCardPropsType) {
         </div>
         <div className={styles.priceContainer}>
           <span className={styles.priceTitle}>Price:</span>
-          <span className={styles.price}>23 924 ₽</span>
+          <span className={styles.price}>{hotel.priceAvg} ₽</span>
         </div>
       </div>
     </li>

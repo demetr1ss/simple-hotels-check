@@ -1,6 +1,7 @@
 export const enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
 }
 
 export const enum AppRoute {
@@ -15,6 +16,16 @@ export const emailRegExp = new RegExp(
 export const passwordRegExp = new RegExp(/^[a-zA-Z0-9]+$/);
 
 export const NameSpace = {
-  userProcess: 'USER-PROCESS',
-  appProcess: 'APP-PROCESS',
+  UserProcess: 'USER-PROCESS',
+  AppProcess: 'APP-PROCESS',
 } as const;
+
+export const enum LoadingStatus {
+  Idle = 'IDLE',
+  Pending = 'PENDING',
+  Fulfilled = 'FULFILLED',
+  Rejected = 'REJECTED'
+}
+
+export const CURRENCY = 'rub';
+export const LIMIT = '10';

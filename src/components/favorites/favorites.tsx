@@ -60,11 +60,131 @@ export default function Favorites() {
         </button>
       </div>
       <ul className={styles.list}>
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
-        <HotelCard />
+        <HotelCard hotel={{
+          location: {
+            country: '',
+            geo: {
+              lon: 0,
+              lat: 0
+            },
+            state: null,
+            name: ''
+          },
+          priceAvg: 0,
+          pricePercentile: {
+            3: 0,
+            10: 0,
+            35: 0,
+            50: 0,
+            75: 0,
+            99: 0
+          },
+          hotelName: '',
+          stars: 0,
+          locationId: 0,
+          hotelId: 0,
+          priceFrom: 0
+        }} checkInDate={''} />
+        <HotelCard hotel={{
+          location: {
+            country: '',
+            geo: {
+              lon: 0,
+              lat: 0
+            },
+            state: null,
+            name: ''
+          },
+          priceAvg: 0,
+          pricePercentile: {
+            3: 0,
+            10: 0,
+            35: 0,
+            50: 0,
+            75: 0,
+            99: 0
+          },
+          hotelName: '',
+          stars: 0,
+          locationId: 0,
+          hotelId: 0,
+          priceFrom: 0
+        }} checkInDate={''} />
+        <HotelCard hotel={{
+          location: {
+            country: '',
+            geo: {
+              lon: 0,
+              lat: 0
+            },
+            state: null,
+            name: ''
+          },
+          priceAvg: 0,
+          pricePercentile: {
+            3: 0,
+            10: 0,
+            35: 0,
+            50: 0,
+            75: 0,
+            99: 0
+          },
+          hotelName: '',
+          stars: 0,
+          locationId: 0,
+          hotelId: 0,
+          priceFrom: 0
+        }} checkInDate={''} />
+        <HotelCard hotel={{
+          location: {
+            country: '',
+            geo: {
+              lon: 0,
+              lat: 0
+            },
+            state: null,
+            name: ''
+          },
+          priceAvg: 0,
+          pricePercentile: {
+            3: 0,
+            10: 0,
+            35: 0,
+            50: 0,
+            75: 0,
+            99: 0
+          },
+          hotelName: '',
+          stars: 0,
+          locationId: 0,
+          hotelId: 0,
+          priceFrom: 0
+        }} checkInDate={''} />
+        <HotelCard hotel={{
+          location: {
+            country: '',
+            geo: {
+              lon: 0,
+              lat: 0
+            },
+            state: null,
+            name: ''
+          },
+          priceAvg: 0,
+          pricePercentile: {
+            3: 0,
+            10: 0,
+            35: 0,
+            50: 0,
+            75: 0,
+            99: 0
+          },
+          hotelName: '',
+          stars: 0,
+          locationId: 0,
+          hotelId: 0,
+          priceFrom: 0
+        }} checkInDate={''} />
       </ul>
     </section>
   );

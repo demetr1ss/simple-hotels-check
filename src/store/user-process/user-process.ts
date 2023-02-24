@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AuthorizationStatus, NameSpace} from '../../const/const';
 import {dropToken, saveToken} from '../../services/token';
 
@@ -7,16 +7,15 @@ export type UserProcessType = {
 };
 
 const initialState: UserProcessType = {
-  authorizationStatus: AuthorizationStatus.NoAuth,
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 export const userProcess = createSlice({
-  name: NameSpace.userProcess,
+  name: NameSpace.UserProcess,
   initialState,
   reducers: {
-    logIn: (state, action) => {
-      const payload = action.payload as string;
-      saveToken(payload);
+    logIn: (state, action: PayloadAction<string>) => {
+      saveToken(action.payload);
       state.authorizationStatus = AuthorizationStatus.Auth;
     },
     logOut: (state) => {
