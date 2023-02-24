@@ -16,7 +16,7 @@ export default function Carousel() {
     >
       {photos.map((slide) => (
         <SwiperSlide key={slide}>
-          <img src={slide} width={165} height={150} alt='фото локации.'/>
+          <img src={slide} width={165} height={150} alt='фото локации.' />
         </SwiperSlide>
       ))}
     </Swiper>
