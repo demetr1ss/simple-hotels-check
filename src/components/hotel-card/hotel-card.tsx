@@ -1,14 +1,23 @@
 import cn from 'classnames';
 import {Hotel} from '../../types/types';
+import {convertRatingToPercent, createLabel} from '../../utils/utils';
 import styles from './hotel-card.module.css';
 
 type HotelCardPropsType = {
   hotel: Hotel;
   isBig?: boolean;
   checkInDate: string;
+  duration: string;
 };
 
-export default function HotelCard({isBig, hotel, checkInDate}: HotelCardPropsType) {
+export default function HotelCard({isBig, hotel, checkInDate, duration}: HotelCardPropsType) {
+  const date = new Date(checkInDate)
+    .toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+    .slice(0, -3);
   const cardClassName = cn(styles.item, {
     [styles.bigCard]: isBig,
   });
@@ -25,13 +34,12 @@ export default function HotelCard({isBig, hotel, checkInDate}: HotelCardPropsTyp
         </button>
       </div>
       <div className={styles.dateWrapper}>
-        <span className={styles.date}>{checkInDate}</span>
-        <span className={styles.dateCount}>1 день</span>
+        <span className={styles.date}>{date}</span>
+        <span className={styles.dateCount}>{`${duration} ${createLabel(Number(duration))}`}</span>
       </div>
       <div className={styles.featuresWrapper}>
         <div className={styles.ratingStars}>
-          {/* convertRatingToPercent(rating) */}
-          <span style={{width: '60%'}}></span>
+          <span style={{width: convertRatingToPercent(hotel.stars)}}></span>
           <span className='visually-hidden'>Rating.</span>
         </div>
         <div className={styles.priceContainer}>

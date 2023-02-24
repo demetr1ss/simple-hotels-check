@@ -1,7 +1,10 @@
+export const CURRENCY = 'rub';
+export const LIMIT = '20';
+
 export const enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN'
+  Unknown = 'UNKNOWN',
 }
 
 export const enum AppRoute {
@@ -24,8 +27,5 @@ export const enum LoadingStatus {
   Idle = 'IDLE',
   Pending = 'PENDING',
   Fulfilled = 'FULFILLED',
-  Rejected = 'REJECTED'
+  Rejected = 'REJECTED',
 }
-
-export const CURRENCY = 'rub';
-export const LIMIT = '10';

@@ -9,7 +9,7 @@ import {AxiosResponse} from 'axios';
 const fetchHotelsData = () => {
   const {location, checkIn, duration} = store.getState()[NameSpace.AppProcess];
   const date = new Date(checkIn);
-  date.setDate(date.getDate() + duration);
+  date.setDate(date.getDate() + Number(duration));
 
   const checkOut = date.toLocaleDateString('en-CA');
 

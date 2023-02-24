@@ -12,3 +12,6 @@ export const getLocation = (state: StateType): string =>
 
 export const getCheckInDate = (state: StateType): string =>
   state[NameSpace.AppProcess].checkIn;
+
+export const getDuration = (state: StateType): string =>
+  state[NameSpace.AppProcess].duration;

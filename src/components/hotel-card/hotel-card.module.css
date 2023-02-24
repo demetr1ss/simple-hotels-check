@@ -115,6 +115,10 @@
   font-size: 17px;
 }
 
+.bigCard:not(:last-child) {
+  margin-bottom: 36px;
+}
+
 .bigCard {
   padding-left: 88px;
 }

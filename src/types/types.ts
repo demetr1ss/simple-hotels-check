@@ -27,7 +27,7 @@ export type Hotel = {
 export type QueryParamsType = {
   location: string;
   checkIn: string;
-  duration: number;
+  duration: string;
 };
 
 export type URLRequestType = {

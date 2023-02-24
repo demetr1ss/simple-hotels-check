@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import styles from './login-form.module.css';
 import FocusLock from 'react-focus-lock';
 import {useForm} from 'react-hook-form';

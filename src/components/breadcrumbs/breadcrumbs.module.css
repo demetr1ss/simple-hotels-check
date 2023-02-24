@@ -1,3 +1,7 @@
+.wrapper {
+  max-width: 350px;
+}
+
 .link {
   position: relative;
   font-weight: 500;
