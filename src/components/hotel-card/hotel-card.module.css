@@ -99,7 +99,7 @@
   content: '';
   display: inline-block;
   height: 100%;
-  background: url('../../../public/img/active-stars.svg') transparent no-repeat center;
+  background: url('/public/img/active-stars.svg') transparent no-repeat center;
   width: 99px;
   background-size: 99px 17px;
 }
@@ -132,7 +132,7 @@
   height: 64px;
   border-radius: 50%;
   background: rgba(65, 82, 46, 0.05);
-  background-image: url('../../../public/img/home-icon.svg');
+  background-image: url('/public//img/home-icon.svg');
   background-repeat: no-repeat;
   background-position: center;
 }

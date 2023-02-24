@@ -5,6 +5,7 @@ import {Hotel} from '../../types/types';
 const INITIAL_CITY = 'Москва';
 const INITIAL_DURATION = '1';
 const INITIAL_CHECKIN = new Date().toLocaleDateString('en-CA');
+const PHOTOS = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg', 'img/img-4.jpg'];
 
 type AppProcessType = {
   hotels: Hotel[];
@@ -12,6 +13,7 @@ type AppProcessType = {
   location: string;
   checkIn: string;
   duration: string;
+  photos: string[];
 };
 
 const initialState: AppProcessType = {
@@ -20,6 +22,7 @@ const initialState: AppProcessType = {
   location: INITIAL_CITY,
   checkIn: INITIAL_CHECKIN,
   duration: INITIAL_DURATION,
+  photos: PHOTOS,
 };
 
 export const appProcess = createSlice({

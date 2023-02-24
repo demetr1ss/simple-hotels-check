@@ -15,3 +15,6 @@ export const getCheckInDate = (state: StateType): string =>
 
 export const getDuration = (state: StateType): string =>
   state[NameSpace.AppProcess].duration;
+
+export const getPhotos = (state: StateType): string[] =>
+  state[NameSpace.AppProcess].photos;

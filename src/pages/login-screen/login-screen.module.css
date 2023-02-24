@@ -8,7 +8,7 @@
 .bg {
   min-height: 100vh;
   background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('../../../public/img/bg.jpg');
+    url('/public/img/bg.jpg');
   filter: blur(10px);
   background-size: cover;
   background-position: 100% 100%;

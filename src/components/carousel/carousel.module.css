@@ -1,5 +1,7 @@
 .container {
-  height: 140px;
-  border: 1px red solid;
   margin-bottom: 28px;
+}
+
+.container img {
+  display: block;
 }
