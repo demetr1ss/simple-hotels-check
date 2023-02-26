@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import {useAppDispatch} from '../../hooks';
 import {changeFavoriteHotelStatus} from '../../store/app-process/app-process';
-import {Hotel} from '../../types/types';
+import {HotelType} from '../../types/types';
 import {convertRatingToPercent, createLabel} from '../../utils/utils';
 import styles from './hotel-card.module.css';
 
 type HotelCardPropsType = {
-  hotel: Hotel;
+  hotel: HotelType;
   isBig?: boolean;
   checkIn: string;
   duration: string;

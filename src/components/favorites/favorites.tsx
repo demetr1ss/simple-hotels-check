@@ -1,31 +1,75 @@
 import styles from './favorites.module.css';
 import cn from 'classnames';
-import {MouseEvent, useState} from 'react';
-import {useAppSelector} from '../../hooks';
-import {getFavoriteHotels} from '../../store/app-process/selectors';
+import {MouseEvent, useEffect, useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getSortedFavoriteHotels} from '../../store/app-process/selectors';
 import HotelCard from '../hotel-card/hotel-card';
+import {changeSort} from '../../store/app-process/app-process';
+import {SortingOption} from '../../const/const';
+import {switchButton} from '../../utils/utils';
 
 export default function Favorites() {
-  const favoriteHotels = useAppSelector(getFavoriteHotels);
-  const [activeButton, setIsActiveButton] = useState('');
+  const favoriteHotels = useAppSelector(getSortedFavoriteHotels);
+  const dispatch = useAppDispatch();
+  const [activeButton, setIsActiveButton] = useState(SortingOption.Default as string);
+
+  useEffect(() => {
+    switch (activeButton) {
+      case SortingOption.Default:
+        break;
+      case SortingOption.AscendingPrice:
+        dispatch(changeSort(SortingOption.AscendingPrice));
+        break;
+      case SortingOption.DescendingPrice:
+        dispatch(changeSort(SortingOption.DescendingPrice));
+        break;
+      case SortingOption.DescendingRating:
+        dispatch(changeSort(SortingOption.DescendingRating));
+        break;
+      case SortingOption.AscendingRating:
+        dispatch(changeSort(SortingOption.AscendingRating));
+        break;
+      default:
+        throw new Error(`${activeButton} not exist`);
+    }
+  }, [activeButton, dispatch]);
+
+  const handleButtonClick = (evt: MouseEvent<HTMLButtonElement>) => {
+    let currentSortValue: SortingOption;
+    const {buttonValue} = evt.currentTarget.dataset;
+
+    if (activeButton === buttonValue) {
+      currentSortValue = switchButton(buttonValue);
+      setIsActiveButton(currentSortValue);
+    } else {
+      setIsActiveButton(buttonValue as SortingOption);
+    }
+  };
 
   const priceButtonClassName = cn(styles.button, {
-    [styles.buttonActive]: activeButton === 'price',
+    [styles.buttonActive]:
+      activeButton === SortingOption.AscendingPrice || activeButton === SortingOption.DescendingPrice,
+    [styles.asc]: activeButton === SortingOption.AscendingPrice,
+    [styles.desc]: activeButton === SortingOption.DescendingPrice,
   });
 
   const ratingButtonClassName = cn(styles.button, {
-    [styles.buttonActive]: activeButton === 'rating',
+    [styles.buttonActive]:
+      activeButton === SortingOption.AscendingRating || activeButton === SortingOption.DescendingRating,
+    [styles.asc]: activeButton === SortingOption.AscendingRating,
+    [styles.desc]: activeButton === SortingOption.DescendingRating,
   });
-
-  const handleButtonClick = (evt: MouseEvent<HTMLButtonElement>) => {
-    setIsActiveButton(evt.currentTarget.name);
-  };
 
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>Избранное</h2>
       <div className={styles.controls}>
-        <button className={ratingButtonClassName} type='button' name='rating' onClick={handleButtonClick}>
+        <button
+          className={ratingButtonClassName}
+          type='button'
+          data-button-value={SortingOption.DescendingRating}
+          onClick={handleButtonClick}
+        >
           Рейтинг
           <svg width='9' height='13' viewBox='0 0 9 13' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -40,7 +84,12 @@ export default function Favorites() {
             />
           </svg>
         </button>
-        <button className={priceButtonClassName} type='button' name='price' onClick={handleButtonClick}>
+        <button
+          className={priceButtonClassName}
+          type='button'
+          data-button-value={SortingOption.AscendingPrice}
+          onClick={handleButtonClick}
+        >
           Цена
           <svg
             width='9'

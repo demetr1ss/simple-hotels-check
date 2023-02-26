@@ -4,7 +4,7 @@ import {changeLoadingStatus, fetchHotels, setHotels} from '../store/app-process/
 import {store} from '../store';
 import {CURRENCY, LIMIT, LoadingStatus, NameSpace, LANG} from '../const/const';
 import {AxiosResponse} from 'axios';
-import {Hotel} from '../types/types';
+import {HotelType} from '../types/types';
 
 const fetchHotelsData = () => {
   const {location, checkIn, duration} = store.getState()[NameSpace.AppProcess];
@@ -13,7 +13,7 @@ const fetchHotelsData = () => {
 
   const checkOut = date.toLocaleDateString('en-CA');
 
-  const data = api.get<Hotel[]>('cache.json', {
+  const data = api.get<HotelType[]>('cache.json', {
     params: {
       location,
       currency: CURRENCY,
@@ -29,7 +29,7 @@ const fetchHotelsData = () => {
 
 function* fetchHotelsWorker() {
   try {
-    const {data}: AxiosResponse<Hotel[]> = yield call(fetchHotelsData);
+    const {data}: AxiosResponse<HotelType[]> = yield call(fetchHotelsData);
     const favoriteHotels = store.getState()[NameSpace.AppProcess].favoriteHotels;
     const {checkIn, duration} = store.getState()[NameSpace.AppProcess];
     const hotelsWithCustomKeys = data.map((item) => {

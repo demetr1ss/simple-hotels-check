@@ -30,3 +30,11 @@ export const enum LoadingStatus {
   Fulfilled = 'FULFILLED',
   Rejected = 'REJECTED',
 }
+
+export const enum SortingOption {
+  Default = 'DEFAULT',
+  AscendingPrice = 'Price: low to high',
+  DescendingPrice = 'Price: high to low',
+  DescendingRating = 'Top rated first',
+  AscendingRating = 'Top rated last',
+}

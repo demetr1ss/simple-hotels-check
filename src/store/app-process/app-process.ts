@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {LoadingStatus, NameSpace} from '../../const/const';
-import {Hotel, QueryParamsType} from '../../types/types';
+import {LoadingStatus, NameSpace, SortingOption} from '../../const/const';
+import {HotelType, QueryParamsType} from '../../types/types';
 
 const INITIAL_CITY = 'Москва';
 const INITIAL_DURATION = '1';
@@ -8,13 +8,14 @@ const INITIAL_CHECKIN = new Date().toLocaleDateString('en-CA');
 const PHOTOS = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg', 'img/img-4.jpg'];
 
 type AppProcessType = {
-  hotels: Hotel[];
-  favoriteHotels: Hotel[];
+  hotels: HotelType[];
+  favoriteHotels: HotelType[];
   hotelsLoadingStatus: LoadingStatus;
   location: string;
   checkIn: string;
   duration: string;
   photos: string[];
+  sortType: string;
 };
 
 const initialState: AppProcessType = {
@@ -25,6 +26,7 @@ const initialState: AppProcessType = {
   checkIn: INITIAL_CHECKIN,
   duration: INITIAL_DURATION,
   photos: PHOTOS,
+  sortType: SortingOption.Default,
 };
 
 export const appProcess = createSlice({
@@ -40,14 +42,14 @@ export const appProcess = createSlice({
     fetchHotels: (state) => {
       state.hotelsLoadingStatus = LoadingStatus.Pending;
     },
-    setHotels: (state, action: PayloadAction<Hotel[]>) => {
+    setHotels: (state, action: PayloadAction<HotelType[]>) => {
       state.hotels = action.payload;
       state.hotelsLoadingStatus = LoadingStatus.Fulfilled;
     },
     changeLoadingStatus: (state, action: PayloadAction<LoadingStatus>) => {
       state.hotelsLoadingStatus = action.payload;
     },
-    changeFavoriteHotelStatus: (state, action: PayloadAction<Hotel>) => {
+    changeFavoriteHotelStatus: (state, action: PayloadAction<HotelType>) => {
       const id = action.payload.hotelId;
 
       state.hotels = state.hotels.map((hotel) =>
@@ -59,11 +61,20 @@ export const appProcess = createSlice({
       if (action.payload.isFavorite) {
         state.favoriteHotels = state.favoriteHotels.filter((hotel) => hotel.hotelId !== id);
       } else {
-        state.favoriteHotels.push(currentHotel as Hotel);
+        state.favoriteHotels.push(currentHotel as HotelType);
       }
+    },
+    changeSort: (state, action) => {
+      state.sortType = action.payload;
     },
   },
 });
 
-export const {fetchHotels, setQueryParams, setHotels, changeLoadingStatus, changeFavoriteHotelStatus} =
-  appProcess.actions;
+export const {
+  fetchHotels,
+  setQueryParams,
+  setHotels,
+  changeLoadingStatus,
+  changeFavoriteHotelStatus,
+  changeSort,
+} = appProcess.actions;

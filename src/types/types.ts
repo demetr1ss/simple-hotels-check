@@ -1,4 +1,4 @@
-export type Hotel = {
+export type HotelType = {
   location: {
     country: string;
     geo: {
