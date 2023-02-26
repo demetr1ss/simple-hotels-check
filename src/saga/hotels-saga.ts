@@ -2,9 +2,10 @@ import {api} from '../services/api';
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {changeLoadingStatus, fetchHotels, setHotels} from '../store/app-process/app-process';
 import {store} from '../store';
-import {CURRENCY, LIMIT, LoadingStatus, NameSpace, LANG} from '../const/const';
-import {AxiosResponse} from 'axios';
+import {CURRENCY, LIMIT, LoadingStatus, NameSpace, LANG, ToastType} from '../const/const';
+import {AxiosError, AxiosResponse} from 'axios';
 import {HotelType} from '../types/types';
+import {showNotify} from '../utils/utils';
 
 const fetchHotelsData = () => {
   const {location, checkIn, duration} = store.getState()[NameSpace.AppProcess];
@@ -36,11 +37,25 @@ function* fetchHotelsWorker() {
       const isFavorite = favoriteHotels.find(({hotelId}) => hotelId === item.hotelId)?.isFavorite;
       return {...item, isFavorite: !!isFavorite, checkIn, duration};
     });
-
     yield put(setHotels(hotelsWithCustomKeys));
-  } catch {
+  } catch (e) {
     yield put(changeLoadingStatus(LoadingStatus.Rejected));
-    throw new Error('fetchHotelsWorker error');
+
+    if ((e as AxiosError).code === 'ERR_NETWORK') {
+      showNotify({
+        type: ToastType.Error,
+        message: 'Сервис временно не доступен. Попробуйте обновить страницу',
+      });
+    }
+
+    if ((e as AxiosError).code === 'ERR_BAD_REQUEST') {
+      showNotify({
+        type: ToastType.Error,
+        message: 'Возможно, Вы ошиблись в параметрах поиска. Обновите страницу и попробуйте еще раз',
+      });
+    }
+
+    throw new Error((e as AxiosError).code);
   }
 }
 

@@ -1,0 +1,100 @@
+.container {
+  grid-area: hotels;
+  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 32px;
+  background: linear-gradient(253deg, #0cc898, #1797d2, #864fe1);
+  background-size: 300% 300%;
+  -webkit-animation: Background 25s ease infinite;
+  -moz-animation: Background 25s ease infinite;
+  animation: Background 25s ease infinite;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.h1 {
+  user-select: none;
+  top: 8em;
+  color: rgb(255, 255, 255);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 2em;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+}
+
+.h1::after {
+  content: 'The service is temporarily unavailable, please try again later';
+  display: block;
+  color: #fff;
+  padding-top: 1em;
+  letter-spacing: 1px;
+  font-family: 'Poiret One', sans-serif;
+  font-size: .7em;
+  text-align: center;
+}
+
+.link {
+  padding: 15px;
+  font-size: 1.4em;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  color: rgba(255, 255, 255);
+  font-weight: 700;
+}
+
+.link:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.15);;
+}
+
+@-webkit-keyframes Background {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Background {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Background {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}

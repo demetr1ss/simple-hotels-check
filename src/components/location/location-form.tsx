@@ -1,8 +1,9 @@
-import styles from './location.module.css';
+import styles from './location-form.module.css';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../hooks';
 import {QueryParamsType} from '../../types/types';
 import {fetchHotels, setQueryParams} from '../../store/app-process/app-process';
+import {locationRegExp} from '../../const/const';
 
 type LocationFormPropsType = {
   location: string;
@@ -30,8 +31,11 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
             className={styles.input}
             type='text'
             defaultValue={location}
-            placeholder={'Город'}
-            {...register('location')}
+            required
+            placeholder='Город'
+            {...register('location', {
+              pattern: locationRegExp,
+            })}
           />
         </label>
         <label>
@@ -40,7 +44,9 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
             className={styles.input}
             type='date'
             defaultValue={checkIn}
-            placeholder={'дд.мм.гггг'}
+            placeholder='дд.мм.гггг'
+            required
+            min={new Date().toLocaleDateString('en-CA')}
             {...register('checkIn')}
           />
         </label>
@@ -50,7 +56,9 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
             className={styles.input}
             type='number'
             defaultValue={duration}
-            placeholder={'1'}
+            placeholder='Укажите кол-во дней'
+            required
+            min={1}
             {...register('duration')}
           />
         </label>

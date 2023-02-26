@@ -1,5 +1,6 @@
-import {SortingOption} from '../const/const';
+import {SortingOption, ToastType} from '../const/const';
 import {HotelType} from '../types/types';
+import {toast, Zoom} from 'react-toastify';
 
 const titles = ['день', 'дня', 'дней'] as const;
 const MAX_RATING = 5;
@@ -46,5 +47,35 @@ export const switchButton = (button: string) => {
       return SortingOption.AscendingRating;
     default:
       throw new Error(`${button} not exist`);
+  }
+};
+
+type showNotifyPropsType = {
+  type: string;
+  message: string;
+};
+
+export const showNotify = (options: showNotifyPropsType) => {
+  switch (options.type) {
+    case ToastType.Error:
+      toast.error(options.message, {
+        toastId: 1,
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500,
+        transition: Zoom,
+        pauseOnHover: false,
+      });
+      break;
+    case ToastType.Warn:
+      toast.warn(options.message, {
+        toastId: 2,
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500,
+        transition: Zoom,
+        pauseOnHover: false,
+      });
+      break;
+    default:
+      throw new Error(`toast type "${options.type}" not exist`);
   }
 };

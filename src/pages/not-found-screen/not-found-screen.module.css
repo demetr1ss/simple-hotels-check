@@ -1,0 +1,27 @@
+.main {
+  height: 80vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 13vw;
+}
+
+.error404 {
+  font-size: 125px;
+  margin: 0;
+  color: firebrick;
+  height: 60px;
+}
+
+.link {
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

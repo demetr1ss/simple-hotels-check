@@ -1,5 +1,6 @@
 import {LoadingStatus} from '../../const/const';
 import {useAppSelector} from '../../hooks';
+import ErrorScreen from '../../pages/error-screen/error-screen';
 import {getHotelsLoadingStatus} from '../../store/app-process/selectors';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Carousel from '../carousel/carousel';
@@ -22,8 +23,12 @@ export default function Hotels({location, checkIn}: HotelsPropsType) {
     })
     .slice(0, -3);
 
-  if (hotelsLoadingStatus == LoadingStatus.Pending || hotelsLoadingStatus === LoadingStatus.Idle) {
+  if (hotelsLoadingStatus === LoadingStatus.Pending || hotelsLoadingStatus === LoadingStatus.Idle) {
     return <Loader />;
+  }
+
+  if (hotelsLoadingStatus === LoadingStatus.Rejected) {
+    return <ErrorScreen />;
   }
 
   return (

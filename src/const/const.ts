@@ -17,7 +17,9 @@ export const emailRegExp = new RegExp(
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 );
 
-export const passwordRegExp = new RegExp(/^[a-zA-Z0-9]+$/);
+export const passwordRegExp = new RegExp(/^[A-Za-z0-9-_.]+$/);
+
+export const locationRegExp = new RegExp(/^[A-Za-zА-Яа-я-]+$/);
 
 export const NameSpace = {
   UserProcess: 'USER-PROCESS',
@@ -38,3 +40,8 @@ export const enum SortingOption {
   DescendingRating = 'Top rated first',
   AscendingRating = 'Top rated last',
 }
+
+export const ToastType = {
+  Error: 'error',
+  Warn: 'warn',
+} as const;
