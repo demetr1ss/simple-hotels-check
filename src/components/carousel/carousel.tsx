@@ -1,24 +1,27 @@
 import {useAppSelector} from '../../hooks';
 import {getPhotos} from '../../store/app-process/selectors';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import 'swiper/css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import styles from './carousel.module.css';
 
 export default function Carousel() {
   const photos = useAppSelector(getPhotos);
 
   return (
-    <Swiper
+    <Slider
       className={styles.container}
-      spaceBetween={12}
-      slidesPerView={3.5}
-      grabCursor
+      dots={false}
+      arrows={false}
+      infinite
+      slidesToScroll={2}
+      variableWidth
     >
       {photos.map((slide) => (
-        <SwiperSlide key={slide}>
+        <div key={slide} className={styles.slide}>
           <img src={slide} width={165} height={150} alt='фото локации.' />
-        </SwiperSlide>
+        </div>
       ))}
-    </Swiper>
+    </Slider>
   );
 }
