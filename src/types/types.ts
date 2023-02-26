@@ -22,6 +22,9 @@ export type Hotel = {
   locationId: number;
   hotelId: number;
   priceFrom: number;
+  checkIn: string;
+  isFavorite: boolean;
+  duration: string;
 };
 
 export type QueryParamsType = {

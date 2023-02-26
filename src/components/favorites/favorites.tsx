@@ -1,9 +1,12 @@
-import HotelCard from '../hotel-card/hotel-card';
 import styles from './favorites.module.css';
 import cn from 'classnames';
 import {MouseEvent, useState} from 'react';
+import {useAppSelector} from '../../hooks';
+import {getFavoriteHotels} from '../../store/app-process/selectors';
+import HotelCard from '../hotel-card/hotel-card';
 
 export default function Favorites() {
+  const favoriteHotels = useAppSelector(getFavoriteHotels);
   const [activeButton, setIsActiveButton] = useState('');
 
   const priceButtonClassName = cn(styles.button, {
@@ -60,81 +63,9 @@ export default function Favorites() {
         </button>
       </div>
       <ul className={styles.list}>
-        <HotelCard hotel={{
-          location: {
-            country: '',
-            geo: {
-              lon: 0,
-              lat: 0
-            },
-            state: null,
-            name: ''
-          },
-          priceAvg: 0,
-          pricePercentile: {
-            3: 0,
-            10: 0,
-            35: 0,
-            50: 0,
-            75: 0,
-            99: 0
-          },
-          hotelName: '',
-          stars: 0,
-          locationId: 0,
-          hotelId: 0,
-          priceFrom: 0
-        }} checkInDate={''} duration={''} />
-        <HotelCard hotel={{
-          location: {
-            country: '',
-            geo: {
-              lon: 0,
-              lat: 0
-            },
-            state: null,
-            name: ''
-          },
-          priceAvg: 0,
-          pricePercentile: {
-            3: 0,
-            10: 0,
-            35: 0,
-            50: 0,
-            75: 0,
-            99: 0
-          },
-          hotelName: '',
-          stars: 0,
-          locationId: 0,
-          hotelId: 0,
-          priceFrom: 0
-        }} checkInDate={''} duration={''} />
-        <HotelCard hotel={{
-          location: {
-            country: '',
-            geo: {
-              lon: 0,
-              lat: 0
-            },
-            state: null,
-            name: ''
-          },
-          priceAvg: 0,
-          pricePercentile: {
-            3: 0,
-            10: 0,
-            35: 0,
-            50: 0,
-            75: 0,
-            99: 0
-          },
-          hotelName: '',
-          stars: 0,
-          locationId: 0,
-          hotelId: 0,
-          priceFrom: 0
-        }} checkInDate={''} duration={''} />
+        {favoriteHotels.map((hotel) => (
+          <HotelCard key={hotel.hotelId} hotel={hotel} checkIn={hotel.checkIn} duration={hotel.duration} />
+        ))}
       </ul>
     </section>
   );

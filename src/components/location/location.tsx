@@ -4,13 +4,13 @@ import {useAppDispatch} from '../../hooks';
 import {QueryParamsType} from '../../types/types';
 import {fetchHotels, setQueryParams} from '../../store/app-process/app-process';
 
-type LocationPropsType = {
+type LocationFormPropsType = {
   location: string;
-  checkInDate: string;
+  checkIn: string;
   duration: string;
 };
 
-export default function Location({location, checkInDate, duration}: LocationPropsType) {
+export default function LocationForm({location, checkIn, duration}: LocationFormPropsType) {
   const dispatch = useAppDispatch();
   const {register, handleSubmit} = useForm<QueryParamsType>({
     mode: 'all',
@@ -39,7 +39,7 @@ export default function Location({location, checkInDate, duration}: LocationProp
           <input
             className={styles.input}
             type='date'
-            defaultValue={checkInDate}
+            defaultValue={checkIn}
             placeholder={'дд.мм.гггг'}
             {...register('checkIn')}
           />

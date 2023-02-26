@@ -9,13 +9,12 @@ import styles from './hotels.module.css';
 
 type HotelsPropsType = {
   location: string;
-  checkInDate: string;
-  duration: string;
+  checkIn: string;
 };
 
-export default function Hotels({location, checkInDate, duration}: HotelsPropsType) {
+export default function Hotels({location, checkIn}: HotelsPropsType) {
   const hotelsLoadingStatus = useAppSelector(getHotelsLoadingStatus);
-  const date = new Date(checkInDate)
+  const date = new Date(checkIn)
     .toLocaleDateString('ru-RU', {
       year: 'numeric',
       month: 'long',
@@ -37,7 +36,7 @@ export default function Hotels({location, checkInDate, duration}: HotelsPropsTyp
       <p className={styles.favoritesCount}>
         Добавлено в Избранное: <span className={styles.count}>3</span> отеля
       </p>
-      <HotelsList checkInDate={checkInDate} duration={duration} />
+      <HotelsList />
     </section>
   );
 }

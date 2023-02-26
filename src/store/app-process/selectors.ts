@@ -7,14 +7,12 @@ export const getHotels = (state: StateType): Hotel[] => state[NameSpace.AppProce
 export const getHotelsLoadingStatus = (state: StateType): LoadingStatus =>
   state[NameSpace.AppProcess].hotelsLoadingStatus;
 
-export const getLocation = (state: StateType): string =>
-  state[NameSpace.AppProcess].location;
+export const getLocation = (state: StateType): string => state[NameSpace.AppProcess].location;
 
-export const getCheckInDate = (state: StateType): string =>
-  state[NameSpace.AppProcess].checkIn;
+export const getCheckIn = (state: StateType): string => state[NameSpace.AppProcess].checkIn;
 
-export const getDuration = (state: StateType): string =>
-  state[NameSpace.AppProcess].duration;
+export const getDuration = (state: StateType): string => state[NameSpace.AppProcess].duration;
 
-export const getPhotos = (state: StateType): string[] =>
-  state[NameSpace.AppProcess].photos;
+export const getPhotos = (state: StateType): string[] => state[NameSpace.AppProcess].photos;
+
+export const getFavoriteHotels = (state: StateType): Hotel[] => state[NameSpace.AppProcess].favoriteHotels;

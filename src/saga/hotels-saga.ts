@@ -1,10 +1,10 @@
 import {api} from '../services/api';
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {Hotel} from '../types/types';
 import {changeLoadingStatus, fetchHotels, setHotels} from '../store/app-process/app-process';
 import {store} from '../store';
-import {CURRENCY, LIMIT, LoadingStatus, NameSpace} from '../const/const';
+import {CURRENCY, LIMIT, LoadingStatus, NameSpace, LANG} from '../const/const';
 import {AxiosResponse} from 'axios';
+import {Hotel} from '../types/types';
 
 const fetchHotelsData = () => {
   const {location, checkIn, duration} = store.getState()[NameSpace.AppProcess];
@@ -20,6 +20,7 @@ const fetchHotelsData = () => {
       checkIn,
       checkOut,
       limit: LIMIT,
+      lang: LANG,
     },
   });
 
@@ -28,16 +29,18 @@ const fetchHotelsData = () => {
 
 function* fetchHotelsWorker() {
   try {
-    const response: AxiosResponse = yield call(fetchHotelsData);
+    const {data}: AxiosResponse<Hotel[]> = yield call(fetchHotelsData);
+    const favoriteHotels = store.getState()[NameSpace.AppProcess].favoriteHotels;
+    const {checkIn, duration} = store.getState()[NameSpace.AppProcess];
+    const hotelsWithCustomKeys = data.map((item) => {
+      const isFavorite = favoriteHotels.find(({hotelId}) => hotelId === item.hotelId)?.isFavorite;
+      return {...item, isFavorite: !!isFavorite, checkIn, duration};
+    });
 
-    if (response.status === 200) {
-      yield put(setHotels(response.data));
-    } else {
-      yield put(changeLoadingStatus(LoadingStatus.Rejected));
-      throw new Error(response.statusText);
-    }
+    yield put(setHotels(hotelsWithCustomKeys));
   } catch {
-    throw Error('fetching error');
+    yield put(changeLoadingStatus(LoadingStatus.Rejected));
+    throw new Error('fetchHotelsWorker error');
   }
 }
 

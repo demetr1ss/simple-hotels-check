@@ -1,5 +1,6 @@
 export const CURRENCY = 'rub';
 export const LIMIT = '20';
+export const LANG = 'ru';
 
 export const enum AuthorizationStatus {
   Auth = 'AUTH',

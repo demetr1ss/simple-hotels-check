@@ -1,4 +1,6 @@
 import cn from 'classnames';
+import {useAppDispatch} from '../../hooks';
+import {changeFavoriteHotelStatus} from '../../store/app-process/app-process';
 import {Hotel} from '../../types/types';
 import {convertRatingToPercent, createLabel} from '../../utils/utils';
 import styles from './hotel-card.module.css';
@@ -6,30 +8,48 @@ import styles from './hotel-card.module.css';
 type HotelCardPropsType = {
   hotel: Hotel;
   isBig?: boolean;
-  checkInDate: string;
+  checkIn: string;
   duration: string;
 };
 
-export default function HotelCard({isBig, hotel, checkInDate, duration}: HotelCardPropsType) {
-  const date = new Date(checkInDate)
+export default function HotelCard({isBig, hotel, checkIn, duration}: HotelCardPropsType) {
+  const dispatch = useAppDispatch();
+  const date = new Date(checkIn)
     .toLocaleDateString('ru-RU', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     })
     .slice(0, -3);
+
   const cardClassName = cn(styles.item, {
     [styles.bigCard]: isBig,
+  });
+
+  const favoriteButtonClassName = cn(styles.button, {
+    [styles.isFavorite]: hotel.isFavorite,
   });
 
   return (
     <li className={cardClassName}>
       <div className={styles.headingWrapper}>
         <h3 className={styles.itemTitle}>{hotel.hotelName}</h3>
-        <button className={styles.button} type='button'>
-          <span className='visually-hidden'>Удалить из избранного.</span>
-          <svg xmlns='http://www.w3.org/2000/svg' width='21' height='18' fill='none' viewBox='0 0 21 18'>
-            <path d='M19.38 1.591A5.533 5.533 0 0 0 17.589.414a5.61 5.61 0 0 0-4.23 0c-.671.273-1.28.673-1.793 1.177L10.5 2.638 9.435 1.59A5.576 5.576 0 0 0 5.527.001a5.576 5.576 0 0 0-3.908 1.59A5.384 5.384 0 0 0 0 5.431c0 1.441.582 2.823 1.619 3.841l1.065 1.047L10.5 18l7.816-7.681 1.065-1.047a5.423 5.423 0 0 0 1.198-1.762 5.348 5.348 0 0 0 0-4.157 5.423 5.423 0 0 0-1.198-1.762Z' />
+        <button
+          className={favoriteButtonClassName}
+          type='button'
+          onClick={() => dispatch(changeFavoriteHotelStatus(hotel))}
+        >
+          <span className='visually-hidden'>
+            {hotel.isFavorite ? 'Удалить из избранного.' : 'Добавить в избранное.'}.
+          </span>
+          <svg xmlns='http://www.w3.org/2000/svg' width='23' height='20' fill='none' viewBox='0 0 23 20'>
+            <path
+              fill='#fff'
+              stroke='#c4c4c4'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M20.38 2.591a5.533 5.533 0 0 0-1.792-1.177 5.61 5.61 0 0 0-4.23 0c-.671.273-1.28.673-1.793 1.177L11.5 3.638 10.435 2.59a5.576 5.576 0 0 0-3.908-1.59 5.576 5.576 0 0 0-3.908 1.59A5.384 5.384 0 0 0 1 6.431c0 1.441.582 2.823 1.619 3.841l1.065 1.047L11.5 19l7.816-7.681 1.065-1.047a5.423 5.423 0 0 0 1.198-1.762 5.348 5.348 0 0 0 0-4.157 5.423 5.423 0 0 0-1.198-1.762Z'
+            />
           </svg>
         </button>
       </div>
