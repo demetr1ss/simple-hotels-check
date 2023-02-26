@@ -1,11 +1,12 @@
-import {useAppSelector} from '../../hooks';
-import {getHotels} from '../../store/app-process/selectors';
+import {HotelType} from '../../types/types';
 import HotelCard from '../hotel-card/hotel-card';
 import styles from './hotels-list.module.css';
 
-export default function HotelsList() {
-  const hotels = useAppSelector(getHotels);
+type HotelListPropsType = {
+  hotels: HotelType[];
+};
 
+export default function HotelsList({hotels}: HotelListPropsType) {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>

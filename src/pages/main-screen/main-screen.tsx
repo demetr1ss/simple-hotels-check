@@ -35,7 +35,7 @@ export default function MainScreen() {
         <div className={styles.wrapper}>
           <LocationForm location={location} checkIn={checkIn} duration={duration} />
           <Favorites />
-          <Hotels location={location} checkIn={checkIn} />
+          <Hotels checkIn={checkIn} />
         </div>
       </main>
     </>
