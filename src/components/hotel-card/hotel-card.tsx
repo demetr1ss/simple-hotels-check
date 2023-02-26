@@ -2,7 +2,7 @@ import cn from 'classnames';
 import {useAppDispatch} from '../../hooks';
 import {changeFavoriteHotelStatus} from '../../store/app-process/app-process';
 import {HotelType} from '../../types/types';
-import {convertRatingToPercent, createLabel} from '../../utils/utils';
+import {convertRatingToPercent, createLabel, getDate} from '../../utils/utils';
 import styles from './hotel-card.module.css';
 
 type HotelCardPropsType = {
@@ -14,13 +14,6 @@ type HotelCardPropsType = {
 
 export default function HotelCard({isBig, hotel, checkIn, duration}: HotelCardPropsType) {
   const dispatch = useAppDispatch();
-  const date = new Date(checkIn)
-    .toLocaleDateString('ru-RU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
-    .slice(0, -3);
 
   const cardClassName = cn(styles.item, {
     [styles.bigCard]: isBig,
@@ -54,7 +47,7 @@ export default function HotelCard({isBig, hotel, checkIn, duration}: HotelCardPr
         </button>
       </div>
       <div className={styles.dateWrapper}>
-        <span className={styles.date}>{date}</span>
+        <span className={styles.date}>{getDate(checkIn)}</span>
         <span className={styles.dateCount}>{`${duration} ${createLabel(Number(duration))}`}</span>
       </div>
       <div className={styles.featuresWrapper}>

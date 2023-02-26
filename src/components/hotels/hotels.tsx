@@ -1,7 +1,8 @@
 import {LoadingStatus} from '../../const/const';
 import {useAppSelector} from '../../hooks';
-import ErrorScreen from '../../pages/error-screen/error-screen';
 import {getHotelsLoadingStatus} from '../../store/app-process/selectors';
+import {getDate} from '../../utils/utils';
+import ErrorScreen from '../../pages/error-screen/error-screen';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Carousel from '../carousel/carousel';
 import HotelsList from '../hotels-list/hotels-list';
@@ -15,13 +16,6 @@ type HotelsPropsType = {
 
 export default function Hotels({location, checkIn}: HotelsPropsType) {
   const hotelsLoadingStatus = useAppSelector(getHotelsLoadingStatus);
-  const date = new Date(checkIn)
-    .toLocaleDateString('ru-RU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
-    .slice(0, -3);
 
   if (hotelsLoadingStatus === LoadingStatus.Pending || hotelsLoadingStatus === LoadingStatus.Idle) {
     return <Loader />;
@@ -35,7 +29,7 @@ export default function Hotels({location, checkIn}: HotelsPropsType) {
     <section className={styles.container}>
       <div className={styles.hotelsHeading}>
         <Breadcrumbs location={location} />
-        <span className={styles.date}>{date}</span>
+        <span className={styles.date}>{getDate(checkIn)}</span>
       </div>
       <Carousel />
       <p className={styles.favoritesCount}>

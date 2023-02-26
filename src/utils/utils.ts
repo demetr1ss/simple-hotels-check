@@ -80,3 +80,12 @@ export const showNotify = (options: showNotifyPropsType) => {
       throw new Error(`toast type "${options.type}" not exist`);
   }
 };
+
+export const getDate = (checkIn: string) =>
+  new Date(checkIn)
+    .toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+    .slice(0, -3);

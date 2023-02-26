@@ -31,12 +31,14 @@ const fetchHotelsData = () => {
 function* fetchHotelsWorker() {
   try {
     const {data}: AxiosResponse<HotelType[]> = yield call(fetchHotelsData);
-    const favoriteHotels = store.getState()[NameSpace.AppProcess].favoriteHotels;
-    const {checkIn, duration} = store.getState()[NameSpace.AppProcess];
+    const {checkIn, duration, favoriteHotels} = store.getState()[NameSpace.AppProcess];
+
     const hotelsWithCustomKeys = data.map((item) => {
       const isFavorite = favoriteHotels.find(({hotelId}) => hotelId === item.hotelId)?.isFavorite;
+
       return {...item, isFavorite: !!isFavorite, checkIn, duration};
     });
+
     yield put(setHotels(hotelsWithCustomKeys));
   } catch (e) {
     yield put(changeLoadingStatus(LoadingStatus.Rejected));
