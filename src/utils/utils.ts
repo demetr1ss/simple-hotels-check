@@ -10,7 +10,8 @@ export const createLabel = (number: number) => {
   return `${titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]]}`;
 };
 
-export const convertRatingToPercent = (rating: number): string => `${Math.ceil((100 * Math.round(rating)) / MAX_RATING)}%`;
+export const convertRatingToPercent = (rating: number): string =>
+  `${Math.ceil((100 * Math.round(rating)) / MAX_RATING)}%`;
 
 export const sortHotelsByAscendingPrice = (a: HotelType, b: HotelType) => a.priceAvg - b.priceAvg;
 export const sortHotelsByDescendingPrice = (a: HotelType, b: HotelType) => b.priceAvg - a.priceAvg;

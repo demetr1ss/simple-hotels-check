@@ -61,7 +61,7 @@ export default function LoginForm() {
               {...register('password', {
                 required: true,
                 pattern: passwordRegExp,
-                minLength: 8
+                minLength: 8,
               })}
             />
             {errors?.password && <span className={styles.error}>invalid password. </span>}

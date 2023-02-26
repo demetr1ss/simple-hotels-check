@@ -17,10 +17,10 @@ export const getDuration = (state: StateType): string => state[NameSpace.AppProc
 
 export const getPhotos = (state: StateType): string[] => state[NameSpace.AppProcess].photos;
 
-export const getFavoriteHotels = (state: StateType): HotelType[] => state[NameSpace.AppProcess].favoriteHotels;
+export const getFavoriteHotels = (state: StateType): HotelType[] =>
+  state[NameSpace.AppProcess].favoriteHotels;
 
 export const getSortType = (state: StateType): string => state[NameSpace.AppProcess].sortType;
-
 
 export const getSortedFavoriteHotels = createSelector(getFavoriteHotels, getSortType, (hotels, sortType) =>
   sortOffers(hotels, sortType)

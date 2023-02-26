@@ -2,7 +2,7 @@ import styles from './breadcrumbs.module.css';
 
 type BreadcrumbsPropsType = {
   location: string;
-}
+};
 
 export default function Breadcrumbs({location}: BreadcrumbsPropsType) {
   return (

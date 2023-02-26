@@ -63,7 +63,8 @@
 .ldio-yr2ov96pdsr div:nth-child(1) {
   background: #666666;
   transform: translate(74px, 40px) scale(1);
-  animation: ldio-yr2ov96pdsr-r 0.5s infinite cubic-bezier(0, 0.5, 0.5, 1), ldio-yr2ov96pdsr-c 2s infinite step-start;
+  animation: ldio-yr2ov96pdsr-r 0.5s infinite cubic-bezier(0, 0.5, 0.5, 1),
+    ldio-yr2ov96pdsr-c 2s infinite step-start;
 }
 .ldio-yr2ov96pdsr div:nth-child(2) {
   animation-delay: -0.5s;

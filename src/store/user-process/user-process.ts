@@ -21,7 +21,7 @@ export const userProcess = createSlice({
     logOut: (state) => {
       dropToken();
       state.authorizationStatus = AuthorizationStatus.NoAuth;
-    }
+    },
   },
 });
 
