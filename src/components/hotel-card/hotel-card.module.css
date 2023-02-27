@@ -41,9 +41,19 @@
   stroke: #c4c4c4;
 }
 
+.button:active path {
+  stroke: #e55858;
+  fill: #e55858;
+}
+
 .isFavorite path {
   stroke: #e55858;
   fill: #e55858;
+}
+
+.isFavorite:active path {
+  fill: none;
+  stroke: #c4c4c4;
 }
 
 .dateWrapper {

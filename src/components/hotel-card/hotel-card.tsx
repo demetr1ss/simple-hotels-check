@@ -2,7 +2,7 @@ import cn from 'classnames';
 import {useAppDispatch} from '../../hooks';
 import {changeFavoriteHotelStatus} from '../../store/app-process/app-process';
 import {HotelType} from '../../types/types';
-import {convertRatingToPercent, createLabel, getDate} from '../../utils/utils';
+import {convertRatingToPercent, createLabel, dayTitles, getDate} from '../../utils/utils';
 import styles from './hotel-card.module.css';
 
 type HotelCardPropsType = {
@@ -48,7 +48,7 @@ export default function HotelCard({isBig, hotel, checkIn, duration}: HotelCardPr
       </div>
       <div className={styles.dateWrapper}>
         <span className={styles.date}>{getDate(checkIn)}</span>
-        <span className={styles.dateCount}>{`${duration} ${createLabel(Number(duration))}`}</span>
+        <span className={styles.dateCount}>{`${duration} ${createLabel(Number(duration), dayTitles)}`}</span>
       </div>
       <div className={styles.featuresWrapper}>
         <div className={styles.ratingStars}>
