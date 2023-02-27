@@ -3,7 +3,7 @@ import {LoadingStatus, NameSpace, SortingOption} from '../../const/const';
 import {HotelType, QueryParamsType} from '../../types/types';
 
 const INITIAL_CITY = 'Москва';
-const INITIAL_DURATION = '1';
+const INITIAL_DURATION = 1;
 const INITIAL_CHECKIN = new Date().toLocaleDateString('en-CA');
 const PHOTOS = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg', 'img/img-4.jpg'];
 
@@ -13,7 +13,7 @@ type AppProcessType = {
   hotelsLoadingStatus: LoadingStatus;
   location: string;
   checkIn: string;
-  duration: string;
+  duration: number;
   photos: string[];
   sortType: string;
 };
@@ -37,7 +37,7 @@ export const appProcess = createSlice({
       const {location, checkIn, duration} = action.payload;
       state.location = location;
       state.checkIn = checkIn;
-      state.duration = duration;
+      state.duration = Number(duration);
     },
     fetchHotels: (state) => {
       state.hotelsLoadingStatus = LoadingStatus.Pending;

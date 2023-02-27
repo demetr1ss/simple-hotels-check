@@ -40,7 +40,7 @@ export default function LoginForm() {
       <FocusLock>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <label className={loginLabelClassName}>
-            <span className={styles.inputlabel}>Логин</span>
+            <span className={styles.inputLabel}>Логин</span>
             <input
               className={styles.input}
               type='email'
@@ -53,7 +53,7 @@ export default function LoginForm() {
             {errors?.email && <span className={styles.error}>invalid email</span>}
           </label>
           <label className={passwordLabelClassName}>
-            <span className={styles.inputlabel}>Пароль</span>
+            <span className={styles.inputLabel}>Пароль</span>
             <input
               className={styles.input}
               type='password'

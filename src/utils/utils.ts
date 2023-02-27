@@ -63,7 +63,7 @@ export const showNotify = (options: showNotifyPropsType) => {
       toast.error(options.message, {
         toastId: 1,
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 2500,
+        autoClose: 3500,
         transition: Zoom,
         pauseOnHover: false,
       });
@@ -72,7 +72,7 @@ export const showNotify = (options: showNotifyPropsType) => {
       toast.warn(options.message, {
         toastId: 2,
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 2500,
+        autoClose: 3500,
         transition: Zoom,
         pauseOnHover: false,
       });

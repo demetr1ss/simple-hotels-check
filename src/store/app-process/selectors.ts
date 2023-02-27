@@ -13,7 +13,7 @@ export const getLocation = (state: StateType): string => state[NameSpace.AppProc
 
 export const getCheckIn = (state: StateType): string => state[NameSpace.AppProcess].checkIn;
 
-export const getDuration = (state: StateType): string => state[NameSpace.AppProcess].duration;
+export const getDuration = (state: StateType): number => state[NameSpace.AppProcess].duration;
 
 export const getPhotos = (state: StateType): string[] => state[NameSpace.AppProcess].photos;
 

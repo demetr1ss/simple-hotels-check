@@ -20,7 +20,7 @@
   margin-bottom: 32px;
 }
 
-.inputlabel {
+.inputLabel {
   display: block;
   margin-bottom: 7px;
   font-weight: 500;
@@ -34,6 +34,15 @@
   font-size: 16px;
   line-height: 18px;
 }
+
+.error,
+.error:focus-visible,
+.error:active,
+.error:focus {
+  outline: none;
+  border-color:#ff3333;
+}
+
 
 .button {
   composes: button from '../login-form/login-form.module.css';

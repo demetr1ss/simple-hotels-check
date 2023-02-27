@@ -24,13 +24,13 @@ export type HotelType = {
   priceFrom: number;
   checkIn: string;
   isFavorite: boolean;
-  duration: string;
+  duration: number;
 };
 
 export type QueryParamsType = {
   location: string;
   checkIn: string;
-  duration: string;
+  duration: number;
 };
 
 export type URLRequestType = {

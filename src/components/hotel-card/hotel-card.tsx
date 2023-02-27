@@ -9,7 +9,7 @@ type HotelCardPropsType = {
   hotel: HotelType;
   isBig?: boolean;
   checkIn: string;
-  duration: string;
+  duration: number;
 };
 
 export default function HotelCard({isBig, hotel, checkIn, duration}: HotelCardPropsType) {

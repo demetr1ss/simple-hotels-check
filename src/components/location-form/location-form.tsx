@@ -4,16 +4,21 @@ import {useAppDispatch} from '../../hooks';
 import {QueryParamsType} from '../../types/types';
 import {fetchHotels, setQueryParams} from '../../store/app-process/app-process';
 import {locationRegExp} from '../../const/const';
+import cn from 'classnames';
 
 type LocationFormPropsType = {
   location: string;
   checkIn: string;
-  duration: string;
+  duration: number;
 };
 
 export default function LocationForm({location, checkIn, duration}: LocationFormPropsType) {
   const dispatch = useAppDispatch();
-  const {register, handleSubmit} = useForm<QueryParamsType>({
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<QueryParamsType>({
     mode: 'all',
   });
 
@@ -22,13 +27,17 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
     dispatch(fetchHotels());
   };
 
+  const locationInputClassName = cn(styles.input, {
+    [styles.error]: errors?.location
+  });
+
   return (
     <section className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <label>
-          <span className={styles.inputlabel}>Локация</span>
+          <span className={styles.inputLabel}>Локация</span>
           <input
-            className={styles.input}
+            className={locationInputClassName}
             type='text'
             defaultValue={location}
             required
@@ -39,7 +48,7 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
           />
         </label>
         <label>
-          <span className={styles.inputlabel}>Дата заселения</span>
+          <span className={styles.inputLabel}>Дата заселения</span>
           <input
             className={styles.input}
             type='date'
@@ -51,11 +60,11 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
           />
         </label>
         <label>
-          <span className={styles.inputlabel}>Количество дней</span>
+          <span className={styles.inputLabel}>Количество дней</span>
           <input
             className={styles.input}
             type='number'
-            defaultValue={duration}
+            defaultValue={Number(duration)}
             placeholder='Укажите кол-во дней'
             required
             min={1}

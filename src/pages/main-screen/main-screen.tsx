@@ -2,7 +2,7 @@ import styles from './main-screen.module.css';
 import Header from '../../components/header/header';
 import Favorites from '../../components/favorites/favorites';
 import Hotels from '../../components/hotels/hotels';
-import LocationForm from '../../components/location/location-form';
+import LocationForm from '../../components/location-form/location-form';
 import {useNavigate} from 'react-router-dom';
 import {useAppSelector} from '../../hooks';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
