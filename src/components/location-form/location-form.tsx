@@ -1,9 +1,10 @@
 import styles from './location-form.module.css';
 import {useForm} from 'react-hook-form';
-import {useAppDispatch} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {QueryParamsType} from '../../types/types';
 import {fetchHotels, setQueryParams} from '../../store/app-process/app-process';
-import {locationRegExp} from '../../const/const';
+import {LoadingStatus, locationRegExp} from '../../const/const';
+import {getHotelsLoadingStatus} from '../../store/app-process/selectors';
 import cn from 'classnames';
 
 type LocationFormPropsType = {
@@ -14,6 +15,7 @@ type LocationFormPropsType = {
 
 export default function LocationForm({location, checkIn, duration}: LocationFormPropsType) {
   const dispatch = useAppDispatch();
+  const hotelsLoadingStatus = useAppSelector(getHotelsLoadingStatus);
   const {
     register,
     handleSubmit,
@@ -23,12 +25,17 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
   });
 
   const onSubmit = (data: QueryParamsType) => {
+    if (hotelsLoadingStatus === LoadingStatus.Rejected) {
+      window.location.reload();
+      return;
+    }
+
     dispatch(setQueryParams(data));
     dispatch(fetchHotels());
   };
 
   const locationInputClassName = cn(styles.input, {
-    [styles.error]: errors?.location
+    [styles.error]: errors?.location,
   });
 
   return (
@@ -72,7 +79,7 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
           />
         </label>
         <button className={styles.button} type='submit'>
-          Найти
+          {hotelsLoadingStatus === LoadingStatus.Rejected ? 'Сбросить' : 'Найти'}
         </button>
       </form>
     </section>
