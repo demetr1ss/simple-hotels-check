@@ -1,7 +1,7 @@
 import {LoadingStatus, ToastType} from '../../const/const';
 import {useAppSelector} from '../../hooks';
 import {getFavoriteHotels, getHotels, getHotelsLoadingStatus, getLocation} from '../../store/app-process/selectors';
-import {getDate, showNotify} from '../../utils/utils';
+import {getLocaleDate, showNotify} from '../../utils/utils';
 import ErrorScreen from '../../pages/error-screen/error-screen';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Carousel from '../carousel/carousel';
@@ -40,7 +40,7 @@ export default function Hotels({checkIn}: HotelsPropsType) {
     <section className={styles.container}>
       <div className={styles.hotelsHeading}>
         <Breadcrumbs location={hotels[0]?.location.name} />
-        <span className={styles.date}>{getDate(checkIn)}</span>
+        <span className={styles.date}>{getLocaleDate(checkIn)}</span>
       </div>
       <Carousel />
       {favoriteHotelsCount > 0 ? <FavoritesCount favoriteHotelsCount={favoriteHotelsCount} /> : ''}

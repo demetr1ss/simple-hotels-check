@@ -2,6 +2,7 @@ import {SortingOption, ToastType} from '../const/const';
 import {HotelType} from '../types/types';
 import {toast, Zoom} from 'react-toastify';
 import {format} from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 export const dayTitles = ['день', 'дня', 'дней'];
 export const hotelsCountTitles = ['отель', 'отеля', 'отелей'];
@@ -85,11 +86,4 @@ export const showNotify = (options: showNotifyPropsType) => {
 
 export const formatDate = (date: Date) => format(date, 'yyyy-MM-dd');
 
-export const getDate = (checkIn: string) =>
-  new Date(checkIn)
-    .toLocaleDateString('ru-RU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
-    .slice(0, -3);
+export const getLocaleDate = (date: string) => format(new Date(date), 'd MMMM yyyy', {locale: ru});
