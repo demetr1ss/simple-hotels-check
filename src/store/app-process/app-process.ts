@@ -4,7 +4,7 @@ import {HotelType, QueryParamsType} from '../../types/types';
 
 const INITIAL_CITY = 'Москва';
 const INITIAL_DURATION = 1;
-const INITIAL_CHECKIN = new Date().toLocaleDateString('en-CA');
+const INITIAL_CHECKIN = String(new Date());
 const PHOTOS = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg', 'img/img-4.jpg'];
 
 type AppProcessType = {

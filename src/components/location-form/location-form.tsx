@@ -6,6 +6,7 @@ import {fetchHotels, setQueryParams} from '../../store/app-process/app-process';
 import {LoadingStatus, locationRegExp} from '../../const/const';
 import {getHotelsLoadingStatus} from '../../store/app-process/selectors';
 import cn from 'classnames';
+import {formatDate} from '../../utils/utils';
 
 type LocationFormPropsType = {
   location: string;
@@ -59,10 +60,10 @@ export default function LocationForm({location, checkIn, duration}: LocationForm
           <input
             className={styles.input}
             type='date'
-            defaultValue={checkIn}
+            defaultValue={formatDate(new Date(checkIn))}
             placeholder='дд.мм.гггг'
             required
-            min={new Date().toLocaleDateString('en-CA')}
+            min={formatDate(new Date())}
             {...register('checkIn')}
           />
         </label>

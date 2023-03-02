@@ -1,6 +1,7 @@
 import {SortingOption, ToastType} from '../const/const';
 import {HotelType} from '../types/types';
 import {toast, Zoom} from 'react-toastify';
+import {format} from 'date-fns';
 
 export const dayTitles = ['день', 'дня', 'дней'];
 export const hotelsCountTitles = ['отель', 'отеля', 'отелей'];
@@ -81,6 +82,8 @@ export const showNotify = (options: showNotifyPropsType) => {
       throw new Error(`toast type "${options.type}" not exist`);
   }
 };
+
+export const formatDate = (date: Date) => format(date, 'yyyy-MM-dd');
 
 export const getDate = (checkIn: string) =>
   new Date(checkIn)

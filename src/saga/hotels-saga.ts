@@ -5,21 +5,19 @@ import {store} from '../store';
 import {CURRENCY, LIMIT, LoadingStatus, NameSpace, LANG, ToastType} from '../const/const';
 import {AxiosError, AxiosResponse} from 'axios';
 import {HotelType} from '../types/types';
-import {showNotify} from '../utils/utils';
+import {formatDate, showNotify} from '../utils/utils';
+import {addDays} from 'date-fns';
 
 const fetchHotelsData = () => {
   const {location, checkIn, duration} = store.getState()[NameSpace.AppProcess];
-  const date = new Date(checkIn);
-  date.setDate(date.getDate() + Number(duration));
-
-  const checkOut = date.toLocaleDateString('en-CA');
+  const checkOutDate = addDays(new Date(checkIn), duration);
 
   const data = api.get<HotelType[]>('cache.json', {
     params: {
       location,
       currency: CURRENCY,
-      checkIn,
-      checkOut,
+      checkIn: formatDate(new Date(checkIn)),
+      checkOut: formatDate(checkOutDate),
       limit: LIMIT,
       lang: LANG,
     },
